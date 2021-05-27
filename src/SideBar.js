@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FiberManualRecord, Create, InsertComment } from "@material-ui/icons";
+import { FiberManualRecord, Create, InsertComment, Add } from "@material-ui/icons";
 import SidebarOption from "./SidebarOption";
 
 function SideBar() {
@@ -18,6 +18,8 @@ function SideBar() {
       </SidebarHeader>
 
       <SidebarOption Icon={InsertComment} title="threads"/>
+
+      <SidebarOption Icon={Add} addChannelOption title="Add Channel"/>
     </SideBarContainer>
   );
 }

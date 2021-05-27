@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Avatar } from "@material-ui/core";
-import { AccessTime, Search, HelpOutline } from "@material-ui/icons";
+import { AccessTime, Search, HelpOutline, Avatar } from "@material-ui/icons";
 
 function Header() {
   return (
