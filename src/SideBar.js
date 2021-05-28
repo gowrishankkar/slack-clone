@@ -1,9 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { FiberManualRecord, Create, InsertComment, Add } from "@material-ui/icons";
+import { useCollection } from "react-firebase-hooks/firestore";
+import {
+  FiberManualRecord,
+  Create,
+  InsertComment,
+  Add,
+} from "@material-ui/icons";
 import SidebarOption from "./SidebarOption";
+import { db } from "./firebase";
 
 function SideBar() {
+  const [channels, loading, error] = useCollection(db.collection("rooms"));
+  console.log('channels', channels)
+
   return (
     <SideBarContainer>
       <SidebarHeader>
@@ -17,9 +27,18 @@ function SideBar() {
         <Create />
       </SidebarHeader>
 
-      <SidebarOption Icon={InsertComment} title="threads"/>
+      <SidebarOption Icon={InsertComment} title="threads" />
 
-      <SidebarOption Icon={Add} addChannelOption title="Add Channel"/>
+      <SidebarOption Icon={Add} addChannelOption title="Add Channel" />
+
+      {channels?.docs.map((doc) => (
+        <SidebarOption
+          key={doc.id}
+          id={doc.id}
+          
+          title={doc.data().name}
+        />
+      ))}
     </SideBarContainer>
   );
 }
